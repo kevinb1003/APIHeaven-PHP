@@ -1,4 +1,4 @@
-# Ethereum-PHP-Payment
+# APIHeaven-Ethereum
 
 created a ethereum payment
 
