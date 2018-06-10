@@ -7,14 +7,14 @@
            $next = $item->address; // GET THE ADDRESS
        }
        $total = '90'; // USD CURRENCY
-       $conversione = "https://apiv2.bitcoinaverage.com/convert/global?from=USD&to=ETH&amount=" . $total; // GET LIVE ETHER VALUE
-       $mostra_conv = json_decode(file_get_contents($conversione), true);
-       $satoshiuff = $mostra_conv["price"];
+       $conversion = "https://apiv2.bitcoinaverage.com/convert/global?from=USD&to=ETH&amount=" . $total; // GET LIVE ETHER VALUE
+       $show_conv = json_decode(file_get_contents($conversion), true);
+       $satoshiuff = $show_conv"price"];
        echo '<script>
    
    
     setInterval(function checkBal(address) {
-       var postdata = "add="+"' . $next . '"+"&s="+"' . $satoshiuff . '";
+       var postdata = "address="+"' . $next . '"+"&satoshi="+"' . $satoshiuff . '";
       $.ajax({
    	type: "post",
    	url: "ether.php",
@@ -24,7 +24,6 @@
                    
                    }else{
                          document.getElementById("paid").innerHTML = html;
-   		 $(".ciao").css("display", "inline");
                    }
    			
    			
@@ -47,7 +46,7 @@
    <body>
       <div id="paid">
       </div>
-      <div style="display:none;text-align:center;" class="card ciao">
+      <div style="display:none;text-align:center;" class="card">
          <center>  <button class="eth-address sis btn btn-default btn-sm" style="vertical-align:top;">Copy Ethereum Address </button></center>
       </div>
       <form style="text-align:center;" class="si" id="form-validation" method="post" enctype="multipart/form-data"  novalidate="novalidate">
