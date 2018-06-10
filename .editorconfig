@@ -1,0 +1,12 @@
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+indent_style = space
+end_of_line = lf
+charset = utf-8
+insert_final_newline = true
+
+# 2 spaces indentation for PHP
+[*.php]
+indent_size = 2
