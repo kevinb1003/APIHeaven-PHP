@@ -1,9 +1,17 @@
-# APIHeaven-Ethereum
 
-created a ethereum payment
+# APIHeaven
 
-## Setup
+Create your custom bitcoin / ethereum payment gateway using APIHeaven
 
-Create your php db connection file
+## Usage
+
+### [APIHeaven](https://apiheaven.com/)
+
+**Generate Ethereum address**
+
+$address= $apiheaven->getEthereumAddress(1);
 
 
+**Generate Bitcoin address**
+
+$address= $apiheaven->getBitcoinAddress(1);
