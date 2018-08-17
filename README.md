@@ -15,3 +15,7 @@ Create your custom bitcoin / ethereum payment gateway using APIHeaven
 **Generate Bitcoin address**
 
     $address= $apiheaven->getBitcoinAddress(1);
+
+## Screenshots
+
+![1](/images/screenshot.png)
