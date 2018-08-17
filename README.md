@@ -1,5 +1,5 @@
 
-# APIHeaven
+# APIHeaven-PHP
 
 Create your custom bitcoin / ethereum payment gateway using APIHeaven
 
