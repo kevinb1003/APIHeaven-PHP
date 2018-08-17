@@ -1,7 +1,7 @@
 <?php
 include_once 'dbconnect.php';
 $address =  filter_input(INPUT_POST, 'address', FILTER_SANITIZE_SPECIAL_CHARS);
-$amount = filter_input(INPUT_POST, 'satoshi', FILTER_SANITIZE_NUMBER_INT);
+$amount = filter_input(INPUT_POST, 'amount', FILTER_SANITIZE_NUMBER_INT);
 $url = "https://api.etherscan.io/api?module=account&action=balance&address=0x" . $address . "&tag=latest&apikey=YOURKEY";
 $api = json_decode(file_get_contents($url), true);
 $balance = $api["result"];
