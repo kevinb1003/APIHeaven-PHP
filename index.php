@@ -1,40 +1,35 @@
 <?php
-   if ($_POST) {
-       $url = "https://apiheaven.com/ethereum/?genpair=1&key=YOURKEY"; // GENERATE THE ADDRESS
-       $fgc = json_decode(file_get_contents($url));
-       $results = $fgc->pairs;
-       foreach ($results as $item) {
-           $next = $item->address; // GET THE ADDRESS
-       }
-       $total = '90'; // USD CURRENCY
-       $conversion = "https://apiv2.bitcoinaverage.com/convert/global?from=USD&to=ETH&amount=" . $total; // GET LIVE ETHER VALUE
-       $show_conv = json_decode(file_get_contents($conversion), true);
-       $satoshiuff = $show_conv"price"];
-       echo '<script>
-   
-   
+include('APIHeaven.class.php');
+if ($_POST) {
+  $apiheaven = new APIHeaven('API KEY HERE');
+  $address   = json_decode($apiheaven->getEthereumAddress(1));
+  $results   = $address->pairs;
+  foreach ($results as $item) {
+    $next = $item->address; // GET THE ADDRESS
+  }
+  $total      = '90'; // USD CURRENCY
+  $conversion = "https://apiv2.bitcoinaverage.com/convert/global?from=USD&to=ETH&amount=" . $total; // GET LIVE ETHER VALUE
+  $show_conv  = json_decode(file_get_contents($conversion), true);
+  $amount     = $show_conv["price"];
+  echo '<script>
     setInterval(function checkBal(address) {
-       var postdata = "address="+"' . $next . '"+"&satoshi="+"' . $satoshiuff . '";
+       var postdata = "address="+"' . $next . '"+"&amount="+"' . $amount . '";
       $.ajax({
-   	type: "post",
-   	url: "ether.php",
+       type: "post",
+       url: "ether.php",
            data: postdata,
            success: function(html){
-   			 if (html.msg ==  "true") {
-                   
+                if (html.msg ==  "true") {              
                    }else{
                          document.getElementById("paid").innerHTML = html;
-                   }
-   			
-   			
-   		
-   	}
-   	});
+                   }                                  
+       }
+       });
        },1000);
    
    </script>';
-   }
-   ?>
+}
+?>
 <html>
    <head>
       <title>TEST</title>
@@ -47,11 +42,11 @@
       <div id="paid">
       </div>
       <div style="display:none;text-align:center;" class="card">
-         <center>  <button class="eth-address sis btn btn-default btn-sm" style="vertical-align:top;">Copy Ethereum Address </button></center>
+         <center>  <button class="eth-address btn btn-default btn-sm" style="vertical-align:top;">Copy Ethereum Address </button></center>
       </div>
-      <form style="text-align:center;" class="si" id="form-validation" method="post" enctype="multipart/form-data"  novalidate="novalidate">
+      <form style="text-align:center;" id="form-validation" method="post" enctype="multipart/form-data"  novalidate="novalidate">
          <br>
-         <button type="submit" class="btn btn-default" name="s" id="s">Pay </button>
+         <button type="submit" class="btn btn-default">Pay </button>
       </form>
       <script>
          var ethaddr = document.querySelector('.eth-address');
