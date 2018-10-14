@@ -2,7 +2,7 @@
 /**
  * APIHeaven v1 client library
  *
- * @author Snowier1003 <https://github.com/Snowier1003>
+ * @author kevinb1003 <https://github.com/kevinb1003>
  *
  */
 class APIHeaven
